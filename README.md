@@ -13,6 +13,11 @@
 
 # Changes:
 
+## 1.4
+
+* upgrade to scala 2.9.1 (as default)
+* new sample of Test using FlatSpec and ShouldMatchers from the ScalaTest Website
+
 ## 1.3
 
 * upgrade to scala 2.8.0 (as default)

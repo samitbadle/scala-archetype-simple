@@ -28,6 +28,7 @@ clear and concise. Here's an example:
 import scala.collection.mutable.Stack
 import org.scalatest.Assertions
 import org.junit.Test
+import java.util
 
 class StackSuite extends Assertions {
 
@@ -104,3 +105,30 @@ class MapSpec extends Spec with MustMatchers {
   }
 }
 
+/*
+Some people prefer using should instead of must, which is also possible.
+Here is an axample from the ScalaTest website
+
+A Stack
+- should pop values in last-in-first-out order
+- should throw NoSuchElementException if an empty stack is popped
+*/
+
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers
+
+class StackSpec extends FlatSpec with ShouldMatchers {
+
+  "A Stack" should "pop values in last-in-first-out order" in {
+    val stack = Stack[Int]()
+    stack.push(1)
+    stack.push(2)
+    stack.pop() should equal (2)
+    stack.pop() should equal (1)
+  }
+
+  it should "throw NoSuchElementException if an empty stack is popped" in {
+    val emptyStack = Stack[String]()
+    evaluating { emptyStack.pop() } should produce [NoSuchElementException]
+  }
+}
